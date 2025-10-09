@@ -118,7 +118,7 @@ export class IntegratedChatService {
         try {
           console.log('Checking vector database status...');
           const stats = await this.vectorService.getIndexStats();
-          const vectorCount = stats.totalVectorCount || 0;
+          const vectorCount = stats.totalRecordCount || stats.recordCount || 0;
           
           if (vectorCount > 0) {
             console.log(`✅ Database ready with ${vectorCount} vectors`);
