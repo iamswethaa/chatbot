@@ -21,7 +21,7 @@ export default function App() {
           
           {/* Chat toggle button - positioned to avoid overlap with chat input */}
           <div className={`fixed transition-all duration-300 ${
-            showChat ? 'bottom-6 right-[25rem]' : 'bottom-6 right-6'
+            showChat ? 'bottom-6 right-[41rem]' : 'bottom-6 right-6'
           }`}>
             <button
               onClick={() => setShowChat(!showChat)}
@@ -43,10 +43,10 @@ export default function App() {
 
       {/* Chat sidebar */}
       <div className={`transition-all duration-300 ease-in-out ${
-        showChat ? 'w-96' : 'w-0'
+        showChat ? 'w-[40rem]' : 'w-0'
       } border-l border-gray-200 bg-white shadow-lg overflow-hidden relative z-0`}>
         {showChat && (
-          <div className="h-full w-96">
+          <div className="h-full w-[40rem]">
             <Chat 
               userId="default-user"
               className="h-full"
