@@ -1,0 +1,22 @@
+{
+  "appId": "com.team.fct-gui",
+  "files": ["dist-electron", "dist"],
+  "icon": "./icon.png",
+  "mac": {
+    "target": "dmg"
+  },
+  "linux": {
+    "target": "AppImage",
+    "category": "Utility"
+  },
+  "win": {
+    "target": ["portable", "msi"]
+  },
+  "extraResources": [
+    {
+      "from": "config",
+      "to": "config",
+      "filter": ["*.ftcfg"]
+    }
+  ]
+}
