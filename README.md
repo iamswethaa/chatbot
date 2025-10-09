@@ -13,7 +13,7 @@
 - **Backend**: Electron, Node.js
 - **Build**: Vite, Electron Builder
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -23,19 +23,19 @@
 
 ### Steps
 
-- Clone the repository
+- **Clone the repository**
 
    ```bash
    git clone https://github.com/swetha-nbase2/chatbot.git
    ```
 
-- Install dependencies
+- **Install dependencies**
 
    ```bash
    npm install
    ```
 
-- Setup the API Keys
+- **Setup the API Keys**
 
    Configure your .env file with API keys
 
@@ -59,24 +59,30 @@
    EMBEDDING_DIMENSION = embedding_dimension_here
    ```
 
-   Create Groq API Key
+   Create Groq API Key:
    1. Visit [Groq Console](https://console.groq.com/)
    2. Create an account and generate an API key
    3. Add to `.env` as `GROQ_API_KEY`
 
-   Create Pinecone API Key
+   Create Pinecone API Key:
    1. Visit [Pinecone](https://app.pinecone.io/)
    2. Create an account and get your API key
    3. Note your environment region
    4. Add to `.env` as `PINECONE_API_KEY` and `PINECONE_ENVIRONMENT`
 
-- Process documents (one time)
+   Chat Configuration:
+   1. Recommended **20** Maximum Chat History
+   2. Embedding Dimension of Xenova/all-MiniLM-L6-v2 is **384**
+
+- **Process documents (one time)**
+
+   Create a folder called **'documents'** inside the root directory and place the documents/data sheets (supported file formats - .txt, .pdf, .md) that are going to serve as knowledge base for the chatbot.
 
    ```bash
    npm run process-docs
    ```
 
-- Start the app
+- **Start the app**
 
    ```bash
    npm run electron-dev
@@ -88,14 +94,14 @@
 2. **Fast app startup**: Use `npm run electron-dev` for instant startup
 3. **Update when needed**: Re-run document processing only when you add new documents
 
-## 🎯 Usage
+## Usage
 
 1. **Start the application**
 2. **Click the chatbot button** (🤖) in the bottom-right corner
 3. **Type your message** and press Enter or click Send
 4. **Enjoy AI-powered conversations** with context memory!
 
-## 📚 Workflow
+## Workflow
 
 ### Knowledge Preparation:
 - Upload necessary documents and data sheets
@@ -112,11 +118,38 @@
 - LLM generates natural language response
 - Response is returned to user in chat interface
 
-## 📝 License
+## Important Scripts
+
+- Process the Documents
+   ```bash
+   npm run process-docs
+   ```
+
+- Clear the Database (Must before processing the new documents)
+   ```bash
+   npm run clear-db
+   ```
+
+- Transpile (Must after making changes in electron files)
+   ```bash
+   npm run transpile
+   ```
+
+- Start the React Server
+   ```bash
+   npm run dev:react
+   ```
+   
+- Start the App
+   ```bash
+   npm run electron-dev
+   ```
+   
+## License
 
 This project is licensed under the MIT License.
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -126,4 +159,4 @@ This project is licensed under the MIT License.
 
 ---
 
-**Happy chatting! 🚀**
+**Happy Chatting!**
