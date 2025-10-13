@@ -9,7 +9,7 @@ export default function App() {
   const [showChat, setShowChat] = useState(false);
 
   return (
-    <div className='flex h-screen bg-[#F9F9F9]'>
+    <div className='flex h-screen bg-app text-app'>
       {/* Main content area */}
       <div className='flex flex-col flex-1'>
         <div>
@@ -25,10 +25,10 @@ export default function App() {
           }`}>
             <button
               onClick={() => setShowChat(!showChat)}
-              className={`flex items-center justify-center w-14 h-14 text-white rounded-full shadow-lg transition-all duration-200 hover:scale-105 z-10 ${
+              className={`flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-all duration-200 hover:scale-105 z-10 ${
                 showChat 
-                  ? 'bg-red-500 hover:bg-red-600' 
-                  : 'bg-blue-500 hover:bg-blue-600'
+                  ? 'btn-bw-outline' 
+                  : 'btn-bw'
               }`}
             >
               {showChat ? (
@@ -44,7 +44,7 @@ export default function App() {
       {/* Chat sidebar */}
       <div className={`transition-all duration-300 ease-in-out ${
         showChat ? 'w-[40rem]' : 'w-0'
-      } border-l border-gray-200 bg-white shadow-lg overflow-hidden relative z-0`}>
+      } border-l border-app bg-panel shadow-lg overflow-hidden relative z-0`}>
         {showChat && (
           <div className="h-full w-[40rem]">
             <Chat 

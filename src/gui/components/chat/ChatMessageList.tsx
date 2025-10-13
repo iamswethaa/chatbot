@@ -6,12 +6,14 @@ interface ChatMessageListProps {
   messages: ChatMessageType[];
   isTyping?: boolean;
   typingMessage?: ChatMessageType;
+  messageDarkMode?: 'none' | 'sent' | 'received';
 }
 
 const ChatMessageList: React.FC<ChatMessageListProps> = ({ 
   messages, 
   isTyping = false, 
   typingMessage 
+  , messageDarkMode = 'none'
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -36,11 +38,11 @@ const ChatMessageList: React.FC<ChatMessageListProps> = ({
       ) : (
         <>
           {messages.map((message) => (
-            <ChatMessage key={message.id} message={message} />
+            <ChatMessage key={message.id} message={message} messageDarkMode={messageDarkMode} />
           ))}
           
           {isTyping && typingMessage && (
-            <ChatMessage message={typingMessage} isTyping={true} />
+            <ChatMessage message={typingMessage} isTyping={true} messageDarkMode={messageDarkMode} />
           )}
         </>
       )}

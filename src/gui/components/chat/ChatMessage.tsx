@@ -4,6 +4,7 @@ import { ChatMessage as ChatMessageType } from '../../../types/electron';
 interface ChatMessageProps {
   message: ChatMessageType;
   isTyping?: boolean;
+  messageDarkMode?: 'none' | 'sent' | 'received';
 }
 
 // Enhanced markdown renderer (supports code blocks, inline code, lists, tables, and paragraphs)
@@ -18,7 +19,7 @@ function renderMessageHtml(content: string): string {
 
   // Code block (```...```) -> <pre><code>
   html = html.replace(/```([\s\S]*?)```/g, (_, code) => {
-    return `<pre class="bg-gray-800 text-gray-100 p-3 rounded text-sm overflow-auto"><code>${escapeHtml(code)}</code></pre>`;
+    return `<pre class="code-bw p-3 rounded text-sm overflow-auto"><code>${escapeHtml(code)}</code></pre>`;
   });
 
   // Inline code `code`
@@ -100,13 +101,13 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isTyping = false }) 
 
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
-      <div className={`max-w-[70%] rounded-lg px-4 py-3 ${isUser ? 'bg-blue-500 text-white' : 'bg-white text-gray-900 shadow'} relative`}>
+      <div className={`max-w-[70%] rounded-lg px-4 py-3 ${isUser ? 'bubble-sent' : 'bubble-received'} relative`}>
         {/* Message content rendered as HTML */}
         <div className="text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: htmlContent }} />
 
         {/* Copy button for code blocks (only show for assistant messages containing triple-backtick code) */}
         {!isUser && /```([\s\S]*?)```/.test(message.content) && (
-          <button onClick={copyLastCodeBlock} className="absolute top-2 right-2 text-xs bg-gray-100 px-2 py-1 rounded hover:bg-gray-200">Copy</button>
+          <button onClick={copyLastCodeBlock} className="absolute top-2 right-2 text-xs bg-muted px-2 py-1 rounded hover:bg-app">Copy</button>
         )}
 
         {/* Typing indicator */}
@@ -118,10 +119,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isTyping = false }) 
           </div>
         )}
 
-        {/* Timestamp */}
-        <div className={`text-xs mt-2 ${isUser ? 'text-blue-100' : 'text-gray-500'}`}>
-          {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-        </div>
+        {/* Timestamp removed (per UX request) */}
       </div>
     </div>
   );

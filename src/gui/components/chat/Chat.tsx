@@ -155,10 +155,10 @@ const Chat: React.FC<ChatProps> = ({
 
   if (isLoading && !session) {
     return (
-      <div className={`flex items-center justify-center h-full bg-gray-50 ${className}`}>
+      <div className={`flex items-center justify-center h-full bg-muted ${className}`}>
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-2"></div>
-          <div className="text-gray-600">Initializing chat...</div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-app mx-auto mb-2"></div>
+          <div className="text-app-muted">Initializing chat...</div>
         </div>
       </div>
     );
@@ -178,13 +178,13 @@ const Chat: React.FC<ChatProps> = ({
       />
       
       {error && (
-        <div className="px-4 py-2 bg-red-50 border-t border-red-200">
-          <div className="flex items-center space-x-2 text-red-700">
+        <div className="px-4 py-2 bg-muted border-t border-app">
+          <div className="flex items-center space-x-2 text-app-muted">
             <span className="text-sm">⚠️</span>
             <span className="text-sm">{error}</span>
             <button 
               onClick={initializeSession}
-              className="ml-auto text-xs bg-red-100 hover:bg-red-200 px-2 py-1 rounded"
+              className="ml-auto text-xs btn-bw-outline px-2 py-1 rounded"
             >
               Retry
             </button>

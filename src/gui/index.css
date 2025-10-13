@@ -1,1 +1,65 @@
 @import "tailwindcss";
+
+/* Black & White theme variables and helper classes */
+:root {
+	/* Primary palette */
+	--app-bg: #ffffff; /* page background */
+	--app-panel: #ffffff; /* panels/cards */
+	--app-muted: #f3f4f6; /* subtle muted background */
+	--app-border: #d1d5db; /* neutral border */
+	--app-text: #0f172a; /* primary text (near-black) */
+	--app-text-muted: #6b7280; /* muted text */
+	--app-inverse-text: #ffffff; /* for dark buttons */
+	--bubble-sent: #24313f; /* lighter/slate for sent messages (more subtle) */
+	--bubble-received: var(--app-muted); /* received bubble uses muted panel color (soft off-white)
+	   - matches the screenshot's subtle panel background */
+}
+
+/* Semantic helper classes to keep components simple */
+.bg-app {
+	background-color: var(--app-bg);
+}
+.bg-panel {
+	background-color: var(--app-panel);
+}
+.bg-muted {
+	background-color: var(--app-muted);
+}
+.text-app {
+	color: var(--app-text);
+}
+.text-app-muted {
+	color: var(--app-text-muted);
+}
+.border-app {
+	border-color: var(--app-border);
+}
+
+/* Black & white button style */
+.btn-bw {
+	background-color: #0f172a; /* black-ish */
+	color: var(--app-inverse-text);
+}
+.btn-bw-outline {
+	background-color: transparent;
+	color: var(--app-text);
+	border: 1px solid var(--app-border);
+}
+
+/* Small utilities used by chat message renderer */
+.code-bw {
+	background-color: #111827; /* dark background for code blocks */
+	color: #f9fafb;
+}
+
+/* Message bubble helpers */
+.bubble-sent {
+	background-color: var(--bubble-sent);
+	color: #f4f7fb; /* even softer off-white text */
+	box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04); /* very soft shadow */
+}
+.bubble-received {
+	background-color: var(--bubble-received);
+	color: var(--app-text);
+	border: 1px solid rgba(209,213,219,0.45); /* slightly lighter border */
+}
