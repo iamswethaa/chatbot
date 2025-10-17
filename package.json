@@ -67,8 +67,8 @@
     "wait-on": "^8.0.3"
   },
   "build": {
-    "appId": "com.gui.fct",
-    "productName": "FCT_GUI",
+    "appId": "chatbot",
+    "productName": "ChatBot",
     "files": [
       "dist/",
       "dist-electron/",
